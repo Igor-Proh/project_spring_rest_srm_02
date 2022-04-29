@@ -21,9 +21,7 @@ public class MyRestController {
     @GetMapping("/employees")
     public List<Employee> getAllEmployees() {
 
-        List<Employee> employees = employeeService.getAllEmployees();
-
-        return employees;
+        return employeeService.getAllEmployees();
     }
 
     @GetMapping("/employees/{employeeId}")
@@ -37,26 +35,5 @@ public class MyRestController {
 
         return employee;
     }
-
-    @ExceptionHandler
-    public ResponseEntity<EmployeeIncorrectData> handleException(
-            NotSuchEmployeeException exception) {
-        EmployeeIncorrectData data = new EmployeeIncorrectData();
-        data.setInfo(exception.getMessage());
-
-        return new ResponseEntity<>(data, HttpStatus.NOT_FOUND);
-
-    }
-
-    @ExceptionHandler
-    public ResponseEntity<EmployeeIncorrectData> handleException(
-            Exception exception) {
-        EmployeeIncorrectData data = new EmployeeIncorrectData();
-        data.setInfo(exception.getMessage());
-
-        return new ResponseEntity<>(data, HttpStatus.BAD_REQUEST);
-
-    }
-
 
 }
