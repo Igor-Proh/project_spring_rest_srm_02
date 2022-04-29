@@ -19,12 +19,18 @@ public class MyRestController {
 
     @GetMapping("/employees")
     public List<Employee> getAllEmployees(){
-        return employeeService.getAllEmployees();
+
+        List<Employee> employees = employeeService.getAllEmployees();
+
+        return employees;
     }
 
     @GetMapping("/employees/{employeeId}")
     public Employee getEmployeeById(@PathVariable int employeeId){
-        return employeeService.getEmployee(employeeId);
+
+        Employee employee = employeeService.getEmployee(employeeId);
+
+        return employee;
     }
 
 
